@@ -32,4 +32,4 @@ for(int i==1; i <=row ; i++){
         std::cout << "*";
     }
     std::cout<<"\n";
-}
+    */
