@@ -45,6 +45,6 @@ int main(){
         int marks =marks_student_pr.first;
         for(auto student : students){
             cout<< student <<" "<<-1*marks<<endl;
-        }s
+        }
     }
 }
