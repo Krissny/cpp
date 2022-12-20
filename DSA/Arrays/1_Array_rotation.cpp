@@ -17,6 +17,7 @@ void print(int arr[],int n){
     for(int i=0; i<n; i++){
         cout<<arr[i]<<" ";
     }
+    cout<<endl;
 }
 /*here we create a whole temporary array and then copy the element from the original one 
 in two steps.
@@ -36,6 +37,25 @@ void reverse(int arr[], int d, int n){
     }
     print(temp, n);
 }
+// another methods is known as "ROTATING ONE BY ONE"
+
+void rotate(int arr[], int d ,int n){
+    int temp;    // a temporary int to store the array initial value
+    while(d--){
+        int i = 0;
+        temp = arr[i];
+        for(i=0; i<n; i++){   // at every loop, one element moves by one step
+            if(i==(n-1)){
+                arr[i] = temp;
+            }
+            else{
+                arr[i]= arr[i+1];
+            }
+        }
+    }
+    print(arr, n);
+}
+//there is one more , which is juggling algorithm , but i am leaving it
 
 
 int main(){
@@ -48,5 +68,7 @@ int main(){
     int d;
     cin>>d;
     reverse(arr, d,n);
+    rotate(arr,d,n);
     
 }
+// can you tell time and space complexity of above functions
