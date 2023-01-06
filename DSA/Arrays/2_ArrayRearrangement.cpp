@@ -41,3 +41,26 @@ int main(){
 	}
 	print(temp, n);
 }
+/* AN OPTIMIZED SOL IN O(N) WHILE ABOVE ONE IS IN O(N^2)
+int * Rearrange(int *arr,int n){
+    // Complete the function
+    int *b = new int[n];
+    for(int j=0; j<n; j++){
+        if(arr[j]>=0){ // the catch here is that the elements are in range from 0 to n-1
+            b[arr[j]] = arr[j];
+        }
+    }
+    int i=0;
+    for(int k=0; k<n; k++){
+        if(arr[k]==0){
+            i =1;
+        }
+    }
+    for(; i<n; i++){
+        if(b[i]==0 ){
+            b[i]=-1;
+        }
+    }
+    return b;
+}
+*/
