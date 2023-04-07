@@ -30,7 +30,7 @@ void DNFalgo(int arr[], int n){
     int high = n-1;
     while(mid<=high){
         if(arr[mid]== 0){
-            swap(arr[mid], arr[low]);
+            swap(arr[mid], arr[low]);  // we are just playing with the mid
             mid++;
             low++;
         }
