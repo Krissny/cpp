@@ -1,46 +1,63 @@
-#include <iostream>
-#include <map>
+#include <bits/stdc++.h>
 using namespace std;
+//implement a stack using queue
+
+struct node{
+    int data;
+    struct node* next ;
+};
+
+struct node* head = nullptr;
+void insertAtBegin(int data){
+    struct node* newNode = (struct node*)malloc(sizeof(struct node));
+    newNode->data = data;
+    newNode->next = head;
+    head = newNode;
+}
+void display(){
+    struct node* current = head;
+    cout<<"[";
+    while(current!=nullptr){
+        cout<<current->data<<" ";
+        current = current->next;
+    }
+    cout<<"]";
+}
+int getsize(){
+    int size =0;
+    struct node* current = head;
+    while(current!=nullptr){
+        current= current->next;
+        size++;
+    }
+    return size;
+}
+void insertAtgiven(int pos, int data){
+    int size = getsize();
+    struct node* newNode = (struct node*)malloc(sizeof(struct node));
+    newNode->data = data;
+    if(pos<0 and pos > size){
+        cout<<"Invalid position\n";
+    }
+    else if(pos==0){
+        newNode->next = head;
+        head = newNode;
+    }
+    else{
+        struct node* current = head;
+        while(--pos){
+            current=current->next;
+        }
+        newNode->next = current->next;
+        current->next = newNode;
+    }
+}
 
 int main() {
-	// your code goes here
-	int t;
-	cin>>t;
-	while(t--){
-	    int n;
-	    int arr[n];
-	    int ar[n];
-	    map <int, int> m;
-	    for(int i =0; i<n; i++){
-	        cin>>arr[i];
-	    }
-	    for(int i=0; i<n; i++){
-	        m[arr[i]]++;
-	    }
-	    for(auto &value: m){
-	        int i=1;
-	        if(value.second==value.first){
-	            value.second =i;
-	            i++;
-	        }
-	        else{
-	            value.second =-1;
-	        }
-	    }
-	    for(int i=0; i<n; i++){
-	        if(m[arr[i]]!=-1){
-	            ar[i] = m[arr[i]];
-	        }
-	        else{
-	            arr[i] = -1;
-	        }
-	    }
-	    
-	    for(int i =0; i<n; i++){
-	        cout<<ar[i];
-	    }
-	    cout<<endl;
-	    
-	}
-	return 0;
+   insertAtBegin(1);
+   insertAtBegin(2);
+   insertAtBegin(3);
+   display();
+   insertAtgiven(1,6);
+   display();
 }
