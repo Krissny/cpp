@@ -51,10 +51,11 @@ int RecursiveLCS(string s1, string s2, int i , int j ){
     }
 
 int main(){
-    string s1 = "abcdefghi";
-    string s2 = "cdgi";
+    string s1 = "ecfbefdcfca";
+    string s2 = "badfcbebbf";
     int ans1 = RecursiveLCS(s1, s2, 0 , 0);
     int ans2 = dynamicLCS(s1, s2);
     cout<<ans1<<endl;
     cout<<ans2<<endl;
+    cout<<s1.length()<<" "<<s2.length();
 }
