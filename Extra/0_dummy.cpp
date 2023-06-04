@@ -1,41 +1,43 @@
+//WILD CARD CHARACTERS//
+//It referes to those characters that can be replaced for zero or more characters in a string
+//here we will be discussing two of them;
+// "*" -> matches with 0 or more instances of any character or set of characters
+//"?"  -> matches with any one character
 #include <bits/stdc++.h>
 using namespace std;
 
-int solve(int i, int j, string str, string ch[], int str_index, int str_size){
-    int found =0;  // intially setting the found =0
-    if(i>=0 && j>=0 && i<6 && j<6 && str[str_index]==ch[i][j]){ // these condition will take care of if we encounter any negative number index or greater than array size of the array, for ex( -1,0 or 7, 2)
-        char temp = ch[i][j];   // storing the value
-        ch[i][j] =0;        // and then making it zero so thata we wont count it again
-        str_index++;      // as we havr found the current index , we move to next
-        if(str_index == str_size){   // if the  str_index becomes equal to the size of string that we means we have reached then end and found all the characters
-            found = 1;
-        }
-        else{
-            found += solve(i-1,j,str,ch,str_index,str_size);   //Up
-            found += solve(i+1,j,str,ch,str_index,str_size);   //Down
-            found += solve(i,j-1,str,ch,str_index,str_size);   // left
-            found += solve(i,j+1,str,ch,str_index,str_size);  // right
-        }
-        ch[i][j] = temp;  // putting back the the character to its place , for next search (backtracking)
-    }
-    return found;
-}
+bool match(string wild, string pat)
+    {// this based on dynamic programming
+        int w = wild.size();
+		int p = pat.size();
+		int dp[p+1][w+1];
+		memset(dp,0,sizeof(dp));
+		dp[0][0] =1;
+		for(int i=1;i<=p;i++){
+			for(int j=1; j<=w;j++){
+				if(pat[i-1]== wild[j-1] or wild[j-1]=='?'){
+					dp[i][j] = dp[i-1][j-1];
+				}
+				else if(wild[j-1]=='*'){
+					dp[i][j] = max(dp[i-1][j], max(dp[i][j-1],dp[i-1][j-1]));
+				}
+				else{
+					dp[i][j]=0;
+				}
+			}
+		}
+		for(int i=0; i<p; i++){
+			for(int j=0; j<w; j++){
+				cout<<dp[i][j]<<" ";
+			}
+			cout<<endl;
+		}
+		return dp[p][w];
 
+    }
 int main(){
-    string str = "MAGIC";
-    string ch[] = { "BBABBM",
-                    "CBMBBA",
-                    "IBABBG",
-                    "GOZBBI",
-                    "ABBBBC",
-                    "MCIGAM" };
-    int str_size = str.length();
-    int ans=0;
-    for(int i = 0; i<6; i++){ //Looking at every character in the given array
-        for(int j =0; j<6; j++){
-                ans+=solve(i,j,str,ch,0, str_size) ; // here 0 denotes the index in the string str which we are currently looking for
-        }
-    }
-
-    cout<<ans<<endl;
+	string wild = "*c*d";
+	string pattern = "abcd";
+	int ans = match(wild, pattern);
+	cout<<ans<<endl;
 }
