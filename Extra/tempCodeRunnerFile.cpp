@@ -1,1 +1,1 @@
-dp[0][0] =1;
+cout<<a[index-1]<<endl;
