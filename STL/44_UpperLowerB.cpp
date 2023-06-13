@@ -19,23 +19,24 @@ int main(){
     }
     cout<<endl;
     //lower bound find the given value in array and if it is not present
-    //then it gives the pointer to the next element
+    //then it gives the pointer to the end iterator
     //while upper bound gives the next element pointer even though it is present
     //these both return location which means pointer
-    int *ptr = lower_bound(a, a+n,25);
+    auto ptr = lower_bound(a, a+n,6)-a;
     int *p = upper_bound(a, a+n,5 );
-    if(ptr==(a+n)){
-        cout<<"Not Found";
-    }
-    else{
-        cout<<(*ptr)<<endl;
-    }
+    cout<<ptr<<endl;
+    // if(ptr==(a+n)){
+    //     cout<<"Not Found"<<endl;
+    // }
+    // else{
+    //     cout<<(*ptr)<<endl;
+    // }
     cout<<(*p)<<endl;
     //similary we can do that with vector
     vector<int> v ={2,13,4,2,6,9};
     sort(v.begin(), v.end());
     auto it = lower_bound(v.begin(),v.end(),5);
-    cout<<(*it)<<endl;
+    cout<<(*it)<< " "<<endl;
 
 
 }
