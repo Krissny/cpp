@@ -1,1 +1,2 @@
-cout<<a[index-1]<<endl;
+cout<<getlen(head)<<endl;
+    // cout<<getlen(head1)<<endl;
