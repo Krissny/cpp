@@ -14,6 +14,23 @@ class Node{
     }
 };
 
+int FloorValue(Node* root, int key){
+	int floor = INT_MIN;
+	while(root!=NULL){
+		if(root->data == key){
+			return root->data;
+		}
+		else if(root->data > key){
+			
+			root = root->left;
+		}
+		else{
+			floor = root->data; // there is no need to use max/min function as we are moving in BST
+			root = root->right;
+		}
+	}
+	return floor;
+}
 
 int main(){
     // creating a node 

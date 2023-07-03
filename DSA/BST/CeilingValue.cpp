@@ -14,6 +14,22 @@ class Node{
     }
 };
 
+int ceilingValue(Node* root, int key){
+	int ceil = INT_MAX;
+	while(root!=NULL){
+		if(root->data == key){
+			return root->data;
+		}
+		else if(root->data > key){
+			ceil = min(ceil,root->data );
+			root = root->left;
+		}
+		else{
+			root = root->right;
+		}
+	}
+	return ceil;
+}
 
 int main(){
     // creating a node 
@@ -24,8 +40,8 @@ int main(){
 	root->left->right = new Node(7);
 	root->right->left = new Node(10);
 	root->right->right = new Node(14);  
-	int ans = FloorValue(root, 6);
-	if(ans==INT_MIN) cout<<"Not found"<<endl;
+	int ans = ceilingValue(root, 6);
+	if(ans==INT_MAX) cout<<"Not found"<<endl;
 	else{
 		cout<<ans<<endl;
 	}
