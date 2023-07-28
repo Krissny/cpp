@@ -14,7 +14,10 @@
         "system_error": "cpp",
         "thread": "cpp",
         "typeindex": "cpp",
-        "new": "cpp"
+        "new": "cpp",
+        "complex": "cpp",
+        "cstdlib": "cpp",
+        "array": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

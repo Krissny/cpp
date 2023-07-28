@@ -22,6 +22,7 @@ vector<int> getInorder(Node* root){
 		// first case, there is not a left 
 		if(curr->left ==NULL){
 			inorder.push_back(curr->data);
+			curr = curr->right;
 		}
 		else{
 			// so there exist a left, ie second case
@@ -55,6 +56,7 @@ vector<int> getInorder(Node* root){
 		// first case, there is not a left 
 		if(curr->left ==NULL){
 			inorder.push_back(curr->data);
+			curr = curr->right;
 		}
 		else{
 			// so there exist a left, ie second case

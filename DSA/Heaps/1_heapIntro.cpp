@@ -26,4 +26,11 @@ int main(){
         pq.pop();
     }
     // if you want to implement a min heap with priority queue , just push the values as negative
+    //also
+    //priority_queue<Node*,vector<Node*>,cmp> pq;
+    // struct cmp{
+    //     bool operator()(Node* l , Node* r){
+    //         return l->data > r->data;
+    //     }
+    // };
 }

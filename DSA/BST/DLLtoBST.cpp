@@ -25,10 +25,10 @@ class TreeNode{
         }   
     };
 
-TreeNode<int> *construct(TreeNode<int> *&head,int n){
+TreeNode *construct(TreeNode* &head,int n){
     if(n<=0 or head==NULL) return NULL;
-    TreeNode<int> *left = construct(head, n/2);
-    TreeNode<int> *root = head;
+    TreeNode *left = construct(head, n/2);
+    TreeNode *root = head;
     root->left = left;
     head = head->right;
     root->right =construct(head, n-(n/2)-1);
