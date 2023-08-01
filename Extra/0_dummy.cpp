@@ -1,27 +1,30 @@
 #include <bits/stdc++.h>
 using namespace std;
- 
-int main()
-{   
-    int t;
-    cin>>t;
-    while(t--){
-        int n;
-        cin>>n;
-        int arr[n];
-        for(int i=0; i<n; i++){
-            cin>>arr[i];
-        }
-        int diff = INT_MAX;
-        for(int i=1; i<n; i++){
-            diff = min(diff, arr[i]-arr[i-1]);
-        }
-        if(diff < 0){
-            cout<<0<<endl;
-        }
-        else if(diff >= 0){
-            int ans = (diff/2) +1;
-            cout<<ans<<endl;
-        }
+
+void printBinary(int num){
+    for(int i =31; i >=0; --i){
+        cout<<((num>>i) &1); 
     }
+    cout<<endl;
+}
+int power(int n){
+    int i =0;
+    while(n >= 1<<i){
+        i++;
+    }
+    return i-1;
+}
+int solve(int n, int p){
+    if(p<=0){
+        return 0;
+    }
+    int a = power(p);
+    int ans =(n<<a) + solve(n ,p-(1<<a));
+    return ans;
+}
+int main()
+{
+    int n;
+    cin>>n;
+    cout<<solve(n,n)<<endl;
 }
