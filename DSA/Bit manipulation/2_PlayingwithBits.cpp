@@ -31,7 +31,7 @@ wh
 */
 void printBinary(int num){
     for(int i =10; i >=0; --i){
-        cout<<((num>>i) &1); // here we are shifting the ith bit to first position and the doing and with 1 whic will only be one  first position is 
+        cout<<((num>>i) &1); // here we are shifting the ith bit to first position and the doing 'and' with 1 whic will only be one  first position is also 1
         //also we can modify it a little to count the set bit
         //count+=((num>>i) &1);
     }
