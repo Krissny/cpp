@@ -37,9 +37,10 @@ void DNFalgo(int arr[], int n){
         else if(arr[mid]==1){
             mid++;
         }
-        else if(arr[mid]==2){
-            swap(arr[mid], arr[high]);
-            high--;
+        else if(arr[mid]==2){  // look how we are here only decreasing high but not increasing mid even though we just swapped, it is so because
+            swap(arr[mid], arr[high]); // the number just  swapped from the high can be a number that's  correct position is at low but then same 
+            high--;                    // condition can arisse at the first if conditin, Yes it can arise there but it will be retify as both low and
+                                        // high start from same position
         }
     }
 }

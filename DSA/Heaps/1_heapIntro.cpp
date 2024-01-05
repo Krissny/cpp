@@ -33,4 +33,6 @@ int main(){
     //         return l->data > r->data;
     //     }
     // };
+    // A mean heap can also be declared as
+    //priority_queue<pair<int, int>,vector<pair<int,int>, greater<pair<int,int>>> pq;
 }
